@@ -1,5 +1,5 @@
 /*!
-  Kloner v0.0.2 (https://kloner.js.org)
+  Kloner v0.1.0 (https://kloner.js.org)
   by Five Fifteen (https://fivefifteen.com)
 */
 

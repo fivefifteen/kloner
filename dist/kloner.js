@@ -5,11 +5,11 @@
 })(this, (function () { 'use strict';
 
   /*!
-    kloner v0.0.2 (https://kloner.js.org)
-    by Kodie Grantham (https://kodieg.com)
+    Kloner v0.1.0 (https://kloner.js.org)
+    by Five Fifteen (https://fivefifteen.com)
   */
 
-  var kloner = function kloner(containerSelector, childSelector, options) {
+  var _kloner = function kloner(containerSelector, childSelector, options) {
     if (childSelector && childSelector.constructor === Object) {
       options = childSelector;
       childSelector = null;
@@ -18,26 +18,26 @@
       options = containerSelector;
       containerSelector = null;
     }
-    options = Object.assign({}, kloner.defaultOptions, options || {});
+    options = Object.assign({}, _kloner.defaultOptions, options || {});
     if (containerSelector) {
       options.containerSelector = containerSelector;
     }
     if (childSelector) {
       options.childSelector = childSelector;
     }
-    var containers = kloner.getInstances(options.containerSelector);
+    var containers = _kloner.getInstances(options.containerSelector);
     if (containers && containers.length) {
       for (var i = 0; i < containers.length; i++) {
         (function (container) {
           var funcs = {
             add: function add(atIndex, options) {
-              return kloner.add(container, atIndex, options);
+              return _kloner.add(container, atIndex, options);
             },
             remove: function remove(atIndex, options) {
-              return kloner.remove(container, atIndex, options);
+              return _kloner.remove(container, atIndex, options);
             }
           };
-          var opts = Object.assign({}, options, kloner.getAttributeOptions(container), funcs);
+          var opts = Object.assign({}, options, _kloner.getAttributeOptions(container), funcs);
           var data = {}; // eslint-disable-line prefer-const
 
           if (opts.template) {
@@ -64,7 +64,7 @@
           var existingChildren = container.querySelectorAll(opts.childSelector);
           var count = existingChildren.length;
           for (var j = 0; j < count; j++) {
-            kloner.replaceParameters(existingChildren[j], Object.assign({}, opts.parameters || {}, {
+            _kloner.replaceParameters(existingChildren[j], Object.assign({}, opts.parameters || {}, {
               index: j,
               number: j + 1
             }));
@@ -73,7 +73,7 @@
           data.constCount = count;
           container.kloner = opts;
           container.klonerData = data;
-          kloner.initializeTriggers(container);
+          _kloner.initializeTriggers(container);
           if (opts.start) {
             var extraChildren = opts.start;
             if (!Array.isArray(extraChildren) && Number.isInteger(parseInt(extraChildren))) {
@@ -108,7 +108,7 @@
     }
     return false;
   };
-  kloner.add = function (containerSelector, atIndex, options) {
+  _kloner.add = function (containerSelector, atIndex, options) {
     if (atIndex && atIndex.constructor === Object) {
       options = atIndex;
       atIndex = null;
@@ -117,13 +117,12 @@
       options = containerSelector;
       containerSelector = null;
     }
-    if (!containerSelector) containerSelector = kloner.defaultOptions.containerSelector;
-    var containers = kloner.getInstances(containerSelector, true);
+    if (!containerSelector) containerSelector = _kloner.defaultOptions.containerSelector;
+    var containers = _kloner.getInstances(containerSelector, true);
     if (containers && containers.length) {
       for (var i = 0; i < containers.length; i++) {
-        (function (container) {
-          var _ref, _atIndex;
-          var opts = Object.assign({}, container.kloner, kloner.getAttributeOptions(container), options);
+        (function (container, _ref) {
+          var opts = Object.assign({}, container.kloner, _kloner.getAttributeOptions(container), options);
           var count = container.klonerData.count;
           var elementCount = opts.updateChildren ? count : container.klonerData.constCount;
           if (opts.max && count >= parseInt(opts.max)) {
@@ -131,14 +130,14 @@
           }
           var elements = container.querySelectorAll(opts.childSelector);
           var element = container.klonerData.template.cloneNode(true);
-          kloner.replaceParameters(element, Object.assign({}, opts.parameters || {}, {
+          _kloner.replaceParameters(element, Object.assign({}, opts.parameters || {}, {
             index: elementCount,
             number: elementCount + 1
           }));
           if (opts.beforeAdd && opts.beforeAdd(container, element, opts) === false) {
             return false;
           }
-          var elementIndex = (_ref = (_atIndex = atIndex) !== null && _atIndex !== void 0 ? _atIndex : elements.length) !== null && _ref !== void 0 ? _ref : container.klonerData.templateIndex;
+          var elementIndex = (_ref = atIndex !== null && atIndex !== void 0 ? atIndex : elements.length) !== null && _ref !== void 0 ? _ref : container.klonerData.templateIndex;
           if (elementIndex) {
             if (elementIndex >= container.children.length) {
               container.append(element);
@@ -151,9 +150,9 @@
           container.klonerData.count++;
           container.klonerData.constCount++;
           if (opts.updateChildren) {
-            kloner.updateChildren(container);
+            _kloner.updateChildren(container);
           }
-          kloner.initializeTriggers(container);
+          _kloner.initializeTriggers(container);
           if (opts.afterAdd) {
             opts.afterAdd(container, element, opts);
           }
@@ -161,7 +160,7 @@
       }
     }
   };
-  kloner.defaultOptions = {
+  _kloner.defaultOptions = {
     afterAdd: null,
     afterChildUpdate: null,
     afterRemove: null,
@@ -177,9 +176,9 @@
     template: null,
     updateChildren: false
   };
-  kloner.getAttributeOptions = function (containerSelector) {
-    if (!containerSelector) containerSelector = kloner.defaultOptions.containerSelector;
-    var container = kloner.getInstances(containerSelector, false, true);
+  _kloner.getAttributeOptions = function (containerSelector) {
+    if (!containerSelector) containerSelector = _kloner.defaultOptions.containerSelector;
+    var container = _kloner.getInstances(containerSelector, false, true);
     if (container) {
       var data = Object.assign({}, container.dataset);
       var regexp = /kloner([A-Z].*)/;
@@ -194,7 +193,7 @@
     }
     return {};
   };
-  kloner.getInstances = function (elements, verify, single) {
+  _kloner.getInstances = function (elements, verify, single) {
     if (typeof elements === 'string') {
       elements = document.querySelectorAll(elements);
     } else if (elements instanceof HTMLElement) {
@@ -219,9 +218,9 @@
     }
     return elements;
   };
-  kloner.initializeTriggers = function (containerSelector) {
-    if (!containerSelector) containerSelector = kloner.defaultOptions.containerSelector;
-    var containers = kloner.getInstances(containerSelector, true);
+  _kloner.initializeTriggers = function (containerSelector) {
+    if (!containerSelector) containerSelector = _kloner.defaultOptions.containerSelector;
+    var containers = _kloner.getInstances(containerSelector, true);
     if (containers && containers.length) {
       for (var i = 0; i < containers.length; i++) {
         (function (container) {
@@ -240,7 +239,7 @@
                       atIndex = Array.prototype.indexOf.call(container.children, child);
                     }
                   }
-                  container.kloner.add(atIndex, kloner.getAttributeOptions(addElements[j]));
+                  container.kloner.add(atIndex, _kloner.getAttributeOptions(addElements[j]));
                 });
                 if (!addElements[j].klonerData) {
                   addElements[j].klonerData = {};
@@ -267,7 +266,7 @@
                       atIndex = Array.prototype.indexOf.call(container.children, child);
                     }
                   }
-                  container.kloner.remove(atIndex, kloner.getAttributeOptions(removeElements[k]));
+                  container.kloner.remove(atIndex, _kloner.getAttributeOptions(removeElements[k]));
                 });
                 if (!removeElements[k].klonerData) {
                   removeElements[k].klonerData = {};
@@ -292,7 +291,7 @@
       }
     }
   };
-  kloner.remove = function (containerSelector, atIndex, options) {
+  _kloner.remove = function (containerSelector, atIndex, options) {
     if (atIndex && atIndex.constructor === Object) {
       options = atIndex;
       atIndex = null;
@@ -301,20 +300,19 @@
       options = containerSelector;
       containerSelector = null;
     }
-    if (!containerSelector) containerSelector = kloner.defaultOptions.containerSelector;
-    var containers = kloner.getInstances(containerSelector, true);
+    if (!containerSelector) containerSelector = _kloner.defaultOptions.containerSelector;
+    var containers = _kloner.getInstances(containerSelector, true);
     if (containers && containers.length) {
       for (var i = 0; i < containers.length; i++) {
         (function (container) {
-          var _atIndex2;
-          var opts = Object.assign({}, container.kloner, kloner.getAttributeOptions(container), options);
+          var opts = Object.assign({}, container.kloner, _kloner.getAttributeOptions(container), options);
           var count = container.klonerData.count;
           if (count <= 0 || opts.min && count <= parseInt(opts.min)) {
             return;
           }
           var elements = container.querySelectorAll(opts.childSelector);
           var indexLimit = elements.length - 1;
-          var elementIndex = (_atIndex2 = atIndex) !== null && _atIndex2 !== void 0 ? _atIndex2 : indexLimit;
+          var elementIndex = atIndex !== null && atIndex !== void 0 ? atIndex : indexLimit;
           if (elementIndex > indexLimit) {
             elementIndex = indexLimit;
           }
@@ -325,9 +323,9 @@
           element.remove();
           container.klonerData.count--;
           if (opts.updateChildren) {
-            kloner.updateChildren(container);
+            _kloner.updateChildren(container);
           }
-          kloner.initializeTriggers(container);
+          _kloner.initializeTriggers(container);
           if (opts.afterRemove) {
             opts.afterRemove(container, element, opts);
           }
@@ -335,7 +333,7 @@
       }
     }
   };
-  kloner.replaceParameters = function (element, parameters) {
+  _kloner.replaceParameters = function (element, parameters) {
     if (!element.klonerData) {
       element.klonerData = {};
     }
@@ -348,9 +346,9 @@
       return (_element$klonerData$p = element.klonerData.parameters[key]) !== null && _element$klonerData$p !== void 0 ? _element$klonerData$p : match;
     });
   };
-  kloner.updateChildren = function (containerSelector) {
-    if (!containerSelector) containerSelector = kloner.defaultOptions.containerSelector;
-    var containers = kloner.getInstances(containerSelector, true);
+  _kloner.updateChildren = function (containerSelector) {
+    if (!containerSelector) containerSelector = _kloner.defaultOptions.containerSelector;
+    var containers = _kloner.getInstances(containerSelector, true);
     if (containers && containers.length) {
       for (var i = 0; i < containers.length; i++) {
         (function (container) {
@@ -362,7 +360,7 @@
               if (opts.beforeChildUpdate && opts.beforeChildUpdate(container, element, opts) === false) {
                 continue;
               }
-              kloner.replaceParameters(element, {
+              _kloner.replaceParameters(element, {
                 index: j,
                 number: j + 1
               });
@@ -376,7 +374,7 @@
     }
   };
 
-  return kloner;
+  return _kloner;
 
 }));
 //# sourceMappingURL=kloner.js.map

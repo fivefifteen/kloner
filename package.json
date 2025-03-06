@@ -1,6 +1,6 @@
 {
   "name": "kloner",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A tiny, dependency-free JavaScript module for cloning/repeating elements.",
   "type": "module",
   "keywords": [
