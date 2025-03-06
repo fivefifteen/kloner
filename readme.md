@@ -1,10 +1,10 @@
 # kloner
 
 [![npm package version](https://img.shields.io/npm/v/kloner.svg?style=flat-square)](https://www.npmjs.com/package/kloner)
-[![Travis build status](https://img.shields.io/travis/com/kodie/kloner.svg?style=flat-square)](https://travis-ci.com/kodie/kloner)
+[![Travis build status](https://img.shields.io/travis/com/fivefifteen/kloner.svg?style=flat-square)](https://travis-ci.com/fivefifteen/kloner)
 [![npm package downloads](https://img.shields.io/npm/dt/kloner.svg?style=flat-square)](https://www.npmjs.com/package/kloner)
 [![code style](https://img.shields.io/badge/code_style-standard-yellow.svg?style=flat-square)](https://github.com/standard/standard)
-[![license](https://img.shields.io/github/license/kodie/kloner.svg?style=flat-square)](license.md)
+[![license](https://img.shields.io/github/license/fivefifteen/kloner.svg?style=flat-square)](license.md)
 
 A tiny, dependency-free JavaScript module for cloning/repeating elements.
 
@@ -33,7 +33,7 @@ Download [dist/kloner.min.js](dist/kloner.min.js) and place the following HTML i
 Place the following HTML in your page's head element (check to make sure the version in the URL is the version you want):
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kodie/kloner@0.0.2/dist/kloner.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fivefifteen/kloner@0.0.2/dist/kloner.min.js"></script>
 ```
 
 
@@ -55,14 +55,14 @@ const kloner = require('kloner')
 ### [GPM](https://github.com/itsahappymedium/gpm)
 
 ```
-gpm install kodie/kloner --save
+gpm install fivefifteen/kloner --save
 ```
 
 
 ### [Bower](https://bower.io)
 
 ```
-bower install kodie/kloner --save
+bower install fivefifteen/kloner --save
 ```
 
 
@@ -117,17 +117,17 @@ window.addEventListener('load', function () {
 
 ## Related
 
- - [filebokz](https://github.com/kodie/filebokz) - A tiny, dependency-free, highly customizable and configurable, easy to use file input with some pretty sweet features.
+ - [filebokz](https://github.com/fivefifteen/filebokz) - A tiny, dependency-free, highly customizable and configurable, easy to use file input with some pretty sweet features.
 
- - [growfield](https://github.com/kodie/growfield) - A tiny, dependency-free JavaScript module for making textarea elements grow with their content.
+ - [growfield](https://github.com/fivefifteen/growfield) - A tiny, dependency-free JavaScript module for making textarea elements grow with their content.
 
- - [hashjump](https://github.com/kodie/hashjump) - A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.
+ - [hashjump](https://github.com/fivefifteen/hashjump) - A tiny, dependency-free JavaScript module for handling anchor links and scrolling elements into view.
 
- - [kolorfield](https://github.com/kodie/kolorfield) - A tiny, dependency-free, color input field helper that utilizes the native color picker.
+ - [kolorfield](https://github.com/fivefifteen/kolorfield) - A tiny, dependency-free, color input field helper that utilizes the native color picker.
 
- - [minitaur](https://github.com/kodie/minitaur) - The ultimate, dependency-free, easy to use, JavaScript plugin for creating and managing modals.
+ - [minitaur](https://github.com/fivefifteen/minitaur) - The ultimate, dependency-free, easy to use, JavaScript plugin for creating and managing modals.
 
- - [peekfield](https://github.com/kodie/peekfield) - A dependency-free, easy to use, JavaScript plugin for hiding and showing fields.
+ - [peekfield](https://github.com/fivefifteen/peekfield) - A dependency-free, easy to use, JavaScript plugin for hiding and showing fields.
 
 
 ## License

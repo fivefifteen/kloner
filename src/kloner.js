@@ -1,6 +1,6 @@
 /*!
-  kloner v0.0.2 (https://kloner.js.org)
-  by Kodie Grantham (https://kodieg.com)
+  Kloner v0.0.2 (https://kloner.js.org)
+  by Five Fifteen (https://fivefifteen.com)
 */
 
 const kloner = (containerSelector, childSelector, options) => {

@@ -12,16 +12,16 @@
     "vanilla"
   ],
   "author": {
-    "name": "Kodie Grantham",
-    "email": "kodie.grantham@gmail.com",
-    "url": "https://kodieg.com"
+    "name": "Five Fifteen",
+    "email": "hello@fivefifteen.com",
+    "url": "https://fivefifteen.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kodie/kloner.git"
+    "url": "https://github.com/fivefifteen/kloner.git"
   },
   "bugs": {
-    "url": "https://github.com/kodie/kloner/issues"
+    "url": "https://github.com/fivefifteen/kloner/issues"
   },
   "homepage": "https://kloner.js.org",
   "license": "MIT",
