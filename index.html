@@ -1,25 +1,98 @@
 <!doctype html>
 <html>
   <head>
-    <title>kloner - A tiny, dependency-free JavaScript module for cloning/repeating elements.</title>
+    <title>Kloner — A tiny, dependency-free JavaScript module for cloning/repeating elements</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="A tiny, dependency-free JavaScript module for cloning/repeating elements" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kloner — A tiny, dependency-free JavaScript module for cloning/repeating elements" />
+    <meta property="og:description" content="A tiny, dependency-free JavaScript module for cloning/repeating elements" />
+    <meta property="og:url" content="https://kloner.js.org/" />
+    <meta property="og:site_name" content="Kloner" />
+    <link rel="canonical" href="https://kloner.js.org/" />
+    <link rel="icon" href="./assets/kloner.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="./assets/kloner-white.png" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
     <style type="text/css">
+      html {
+        scrollbar-color: #000 #fff;
+        -webkit-tap-highlight-color: transparent;
+      }
+
       body {
-        background-color: #e9ecef;
+        background-color: #fff;
+        font-family: "Montserrat", sans-serif;
       }
 
       a {
-        color: #5185b3;
+        color: #000;
         text-decoration: underline;
       }
 
       .github-fork-ribbon:before {
-        background-color: #5185b3;
+        background-color: #000;
       }
 
-      footer {
+      .header, .footer {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+      }
+
+      .header .container > *, .footer .container > * {
+        margin: 1rem 0;
+      }
+
+      .header a, .footer a {
+        color: #fff;
+      }
+
+      .footer {
         padding: 4rem 0;
+        text-align: center;
+      }
+
+      .github-link {
+        font-size: 50px;
+      }
+
+      .fivefifteen-link {
+        margin-top: 50px !important;
+      }
+
+      .fivefifteen-footer-link img {
+        width: 150px;
+      }
+
+      .btns {
+        text-align: center;
+      }
+
+      .btn-custom {
+        color: #fff;
+        background-color: #000;
+        border-color: #000;
+        margin: 10px;
+        text-decoration: none;
+      }
+
+      .btn-custom:hover {
+        color: #fff;
+      }
+
+      .npm-install {
+        color: #000;
+        display: block;
+        font-size: 18px;
+        margin-top: 50px;
       }
 
       .container {
@@ -27,21 +100,23 @@
       }
 
       #main .container {
-        background-color: #ffffff;
+        background-color: #fff;
         padding: 4rem 2rem;
       }
 
       .people-grid {
+        align-items: center;
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
         gap: 1rem;
       }
 
       .person {
-        background-color: #e9ecef;
-        border-radius: 10px;
+        background-color: #fff;
+        border: 10px dashed #000;
         padding: 1rem;
-        width: calc(25% - 0.75rem);
+        width: 100%;
       }
 
       .people-grid .btn-primary {
@@ -56,8 +131,30 @@
         display: block;
       }
 
+      input[type="text"] {
+        border: 2.5px dashed #000;
+        width: 100%;
+      }
+
       input[type="number"] {
-        width: 50px;
+        border: 2.5px dashed #000;
+        width: 75px;
+      }
+
+      @media (min-width: 600px) {
+        .btn-custom {
+          margin: 0;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .people-grid {
+          flex-direction: row;
+        }
+
+        .person {
+          width: calc(25% - 0.75rem);
+        }
       }
     </style>
     <script type="text/javascript" src="dist/kloner.min.js"></script>
@@ -70,20 +167,27 @@
   <body>
     <a class="github-fork-ribbon" href="https://github.com/fivefifteen/kloner" data-ribbon="Check me out on GitHub" title="Check me out on GitHub">Check me out on GitHub</a>
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="header jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">kloner</h1>
+        <img src="./assets/kloner-white.png" />
+        <h1 class="display-4">Kloner</h1>
         <p class="lead">A tiny, dependency-free JavaScript module for cloning/repeating elements.</p>
-        <p><a href="https://github.com/fivefifteen/kloner" target="_blank">https://github.com/fivefifteen/kloner</a></p>
+        <p class="fivefifteen-link"><a href="https://fivefifteen.com" target="_blank"><img src="./assets/fivefifteen.png" /><br /><b>A Five Fifteen Project</b></a></p>
       </div>
+    </div>
+
+    <div class="btns container">
+      <a href="https://github.com/fivefifteen/kloner/archive/refs/heads/main.zip" class="btn btn-lg btn-custom" role="button">Download</a>
+      <a href="https://github.com/fivefifteen/kloner" class="btn btn-lg btn-custom" target="_blank" role="button">GitHub/Documentation</a>
+      <code class="npm-install">npm install kloner --save</code>
     </div>
 
     <div id="main">
       <div class="container btns">
         <div>Number of people: <span data-kloner-count="people">1</span></div>
         <br />
-        <button type="button" class="btn btn-primary" data-kloner-add="people">Add Person</button>
-        <button type="button" class="btn btn-primary" data-kloner-remove="people">Remove Person</button>
+        <button type="button" class="btn btn-custom" data-kloner-add="people">Add Person</button>
+        <button type="button" class="btn btn-custom" data-kloner-remove="people">Remove Person</button>
       </div>
 
       <div id="people" class="container people-grid kloner" data-kloner-child-selector=".person">
@@ -104,16 +208,20 @@
             <input type="number" id="people[{kloner-index}][age]" name="people[{kloner-index}][age]" min="1" max="99" />
           </fieldset>
 
-          <button type="button" class="btn btn-danger" data-kloner-remove>Remove Person</button>
+          <button type="button" class="btn btn-custom" data-kloner-remove>Remove Person</button>
         </div>
 
-        <button type="button" class="btn btn-primary" data-kloner-add>Add Person</button>
+        <div class="btn-container">
+          <button type="button" class="btn btn-custom" data-kloner-add>Add Person</button>
+        </div>
       </div>
     </div>
 
     <footer class="footer">
       <div class="container">
-        <span class="text-muted">&copy; <a href="https://fivefifteen.com" target="_blank">Five Fifteen</a></span>
+        <p class="github-link"><a href="https://github.com/fivefifteen/kloner" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+        <p class="fivefifteen-footer-link"><a href="https://fivefifteen.com" target="_blank"><img src="./assets/fivefifteen.png" /></a></p>
+        <p class="copyright">&copy; <a href="https://fivefifteen.com" target="_blank">Five Fifteen</a></p>
       </div>
     </footer>
   </body>
