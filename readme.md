@@ -44,7 +44,7 @@ Download [dist/kloner.min.js](dist/kloner.min.js) and place the following HTML i
 Place the following HTML in your page's head element (check to make sure the version in the URL is the version you want):
 
 ```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fivefifteen/kloner@0.0.2/dist/kloner.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/fivefifteen/kloner@0.1/dist/kloner.min.js"></script>
 ```
 
 
